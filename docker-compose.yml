@@ -1,0 +1,25 @@
+services:
+  onlycat2mqtt:
+    build: ./onlycat2mqtt
+    restart: unless-stopped
+    volumes:
+      - ./log/:/app/log/:rw
+    environment:
+      - TZ=Pacific/Auckland
+      - LOG_LEVEL=debug
+      - TOKEN=
+      - MQTT_SERVER=mqtt://x.x.x.x
+      - MQTT_USERNAME=
+      - MQTT_PASSWORD=
+    ports:
+      - "8889:8889"
+    networks:
+      - net_onlycat2mqtt
+
+networks:
+  net_onlycat2mqtt:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.211.0/24

@@ -12,3 +12,10 @@ Should be as simple as:
 3. docker compose up -d
 
 Find the TOKEN in the Account section of the Onlycat app under Device Token.
+
+Generally each event will generate 4 messages:
+First message comes more or less immediately on detecting activity, will just show if motion is detected from inside or outside.
+Second message adds motion classification.
+Third message adds detected RFID tags.
+Fourth message is video file is ready and with a framecount.
+
